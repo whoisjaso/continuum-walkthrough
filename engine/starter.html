@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Starter: one persistent object (the "document") that travels through every scene. Copy this, then grow it beat by beat. -->
+<style>
+  @font-face { font-family: "InterV"; src: url("inter.woff2") format("woff2"); font-weight: 100 900; }
+  html, body { margin: 0; background: #F4F2EE; overflow: hidden; font-family: InterV, -apple-system, system-ui, sans-serif; color: #0E0E0E; -webkit-font-smoothing: antialiased; }
+  #stage { position: relative; overflow: hidden; }
+  .abs { position: absolute; left: 0; top: 0; will-change: transform, opacity, filter; }
+  .card { background: #fff; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,.10), 0 4px 14px rgba(0,0,0,.05); padding: 40px 44px; }
+  .doc { width: 520px; height: 672px; background: #fff; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,.14); }
+  .k { font-size: 30px; color: #6F6B65; } .big { font-size: 120px; font-weight: 750; letter-spacing: -0.04em; color: #E5484D; }
+  #wm { font-size: 120px; font-weight: 300; letter-spacing: 0.18em; }
+  #tag { font-size: 22px; color: #8A867F; }
+</style></head>
+<body><div id="stage">
+  <div id="doc" class="abs doc"></div>
+  <div id="cost" class="abs card"><div class="k">Retyping, by hand</div><div class="big" id="ctr">$0</div><div class="k">a year</div></div>
+  <div id="cta" class="abs" style="font-size:64px;font-weight:650;letter-spacing:-0.02em">Worth a look? Just reply.</div>
+  <div id="wm" class="abs">BRAND</div>
+  <div id="tag" class="abs">Sample data · made-up company</div>
+</div>
+<script src="engine.js"></script>
+<script>
+const VW = AR === 'h' ? 1920 : 1080, VH = AR === 'h' ? 1080 : 1920, LEN = 12;
+Object.assign($('stage').style, { width: VW + 'px', height: VH + 'px' });
+// Timeline: every key = the onset of the word that names it (from vo_verify word CSVs). Never guess.
+const T = { docIn: 0.3, docUp: 2.0, cost: 2.4, money: 3.2, docBack: 6.0, cta: 8.0, ctaOut: 9.6, mark: 9.9, markOut: 11.2 };
+// Layouts per aspect: [x, y, scale] centres. The SAME object moves between them = continuity.
+const L = AR === 'v'
+  ? { doc: [540, 900, 1], docTop: [540, 420, 0.55], cost: [540, 1180], cta: [540, 960], wm: [540, 960], tag: [540, 1860] }
+  : { doc: [960, 540, 1], docTop: [480, 540, 0.8], cost: [1300, 540], cta: [960, 540], wm: [960, 540], tag: [960, 1040] };
+function seek(t, tf = t) {
+  const D = (k) => track([[0, L.doc[k]], [T.docUp, L.docTop[k], 11, 1], [T.docBack, L.doc[k], 11, 1]])(t);
+  setT($('doc'), D(0), D(1) + (1 - step(t - T.docIn, 14, 0.95)) * 120, D(2), vis(t, T.docIn, T.cta - 0.4, 16));
+  const cv = vis(t, T.cost, T.docBack, 14);
+  setT($('cost'), L.cost[0], L.cost[1] + (1 - cv) * 80, lerp(0.95, 1, cv), cv, (1 - cv) * 12);
+  $('ctr').textContent = money(26000 * Math.pow(sm(T.money, T.money + 1.4, t), 0.6));
+  const c = vis(t, T.cta, T.ctaOut, 16); setT($('cta'), L.cta[0], L.cta[1] + (1 - c) * 40, 1, c, (1 - c) * 10);
+  const m = vis(t, T.mark, T.markOut, 6); setT($('wm'), L.wm[0], L.wm[1], lerp(0.97, 1, m), m, (1 - m) * 8);   // logo ALONE
+  setT($('tag'), L.tag[0], L.tag[1], 1, 0.8 * vis(t, 0.3, T.cta - 0.4));
+}
+document.fonts.ready.then(() => { seek(0); window.READY = true; });
+</script></body></html>

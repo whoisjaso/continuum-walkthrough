@@ -1,0 +1,14 @@
+{ "voice": "nPczCjzI2devNBz1zQrb", "model": "eleven_v4",
+  "lines": [
+    { "id": "a01", "text": "[casual] Hey, this is random... but I peeped something in your business that could be interesting." },
+    { "id": "a02", "text": "Every day, purchase orders like this one hit your inbox." },
+    { "id": "a03", "text": "And someone on your team types every line, by hand, into your ERP... your CRM... the customer folder... and the email." },
+    { "id": "a04", "text": "[measured] At twenty dollars an hour, five hours a day, that's twenty-six thousand dollars a year. Just retyping." },
+    { "id": "a05", "text": "Here's what it looks like when that's handled for you." },
+    { "id": "a06", "text": "It reads the PO, and checks every line against your records." },
+    { "id": "a07", "text": "[serious] Twelve hundred hangers? That's ten times their usual. So it asks first." },
+    { "id": "a08", "text": "One tap to fix it. One tap to approve." },
+    { "id": "a09", "text": "[confident] Then it's in your ERP, your CRM, the customer folder, and the confirmation's already sent." },
+    { "id": "a10", "text": "A minute forty-four. Start to finish." },
+    { "id": "a11", "text": "[casual] Worth a look? Just reply." }
+  ] }
