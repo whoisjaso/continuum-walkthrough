@@ -49,7 +49,17 @@ Setup: `node` 20+, `ffmpeg`, `python3` with numpy, `npm i playwright-core` (or `
 - Logos: real SVGs (simple-icons, exact brand hex). **Only show tools the prospect actually uses or that you really integrate with.** A logo implies an integration.
 - Data is made up and labelled "Sample data · made-up company". Money maths shows its formula.
 
-## Voice (ElevenLabs)
+## Voice: ask first, then build
+**Always ask which voice they want** (intake question 7), with the options below. Recommend ElevenLabs and tell them it's free: **10,000 free credits every month**.
+
+| Option | Cost | Sounds | How |
+|---|---|---|---|
+| **ElevenLabs (recommended)** | **Free**: 10,000 credits a month ≈ 5 videos | Most human | `scripts/vo_gen.mjs` with their API key (elevenlabs.io → Profile → API Keys) |
+| Their own voice, recorded | Free | Most personal | They record each line on a phone; save it as `vo/raw/<id>-t1.wav` and run `vo_verify.sh` as usual |
+| Their own voice, cloned | ElevenLabs paid plan | Like them, no recording | Instant Voice Clone in ElevenLabs, then put that voice ID in `script.json` |
+| Built-in computer voice | Free, no account | Robotic | `say -v Samantha -o a01.aiff "…"`; use it for timing drafts only |
+
+ElevenLabs details:
 - Key: `ELEVENLABS_API_KEY` or `ELEVENLABS_KEY_FILE`. Never print it, paste it in chat, or commit it. In T3, use `request_secret` with file delivery and delete the file when done.
 - Default: voice Brian `nPczCjzI2devNBz1zQrb`, model `eleven_v4`, stability 0.45. Audio tags like `[casual]`, `[measured]`, `[serious]` and `[confident]` steer the read.
 - **Free plan:** 10,000 credits a month (≈ 10,000 characters). A 60 s script is ≈ 900 characters, so 2 takes of everything is ≈ 1,800, about 5 videos a month.

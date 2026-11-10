@@ -55,6 +55,24 @@ flowchart LR
 
 ---
 
+## Pick your voice
+
+The skill asks you which voice you want before it makes anything.
+
+| Option | Cost | Sounds |
+|---|---|---|
+| ⭐ **ElevenLabs (recommended)** | **Free**: 10,000 credits every month, about 5 videos | The most human AI voice |
+| Your own voice, recorded on your phone | Free | The most personal |
+| Your own voice, cloned in ElevenLabs | Paid plan | Like you, with no recording |
+| Your computer's built-in voice | Free, no account | Robotic; use it for drafts |
+
+To get your free ElevenLabs key:
+1. Sign up at [elevenlabs.io](https://elevenlabs.io).
+2. Copy your key from Profile → API Keys.
+3. Give it to your agent when it asks.
+
+---
+
 ## Install (2 minutes)
 
 ```bash
@@ -76,7 +94,7 @@ Then just ask your agent:
 | ffmpeg | `brew install ffmpeg` |
 | Python 3 + numpy | `pip install numpy` |
 | whisper.cpp | `brew install whisper-cpp` + the model `ggml-small.en-q5_1.bin` |
-| ElevenLabs key | `export ELEVENLABS_API_KEY=…` (never commit it) |
+| ElevenLabs key (free) | `export ELEVENLABS_API_KEY=…` (never commit it). Or pick another voice option |
 | Sound effects | Your own library. `references/sound-map.md` lists the kind of sound for each role |
 
 ---

@@ -11,7 +11,12 @@ Ask what the user can't be guessed from the brief. Skip any question the brief a
 ## Round 2: the voice and the sender
 5. **Opener:** "Hey, this is random… but I peeped something in your business that could be interesting." (recommended) · a more formal opener · a custom one
 6. **Who is the iMessage from?** The sender's name and headshot path. Default: the user and their branding headshot.
-7. **Voice:** Brian (warm, casual US male, recommended) · another ElevenLabs voice ID · the user's own cloned voice
+7. **Which voice do you want?** Always ask this, with these options:
+   - **ElevenLabs (recommended, free):** the most human-sounding AI voice. The free plan gives **10,000 free credits every month** (≈ 10,000 characters, about 5 videos of this length). Sign up at elevenlabs.io, then copy your API key from Profile → API Keys. Default voice: Brian (warm, casual, US male). Others: browse the Voice Library and paste the voice ID.
+   - **Your own voice:** record each line yourself on your phone. It's free and the most personal, but takes ~15 minutes to record.
+   - **Your own voice, cloned:** ElevenLabs Instant Voice Clone (paid plan). It sounds like you without recording every line.
+   - **Built-in computer voice:** macOS `say`. It's free and needs no account, but it sounds robotic, so use it only for timing drafts.
+   Then: if ElevenLabs, ask for a male or female voice and which tone (casual, confident, calm), and offer 2–3 voice IDs to pick from.
 8. **CTA:** "Worth a look? Just reply." (recommended) · "Book 15 minutes" · custom
 
 ## Round 3: the delivery
