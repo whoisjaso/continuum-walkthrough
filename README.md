@@ -58,7 +58,7 @@ flowchart LR
 ## Install (2 minutes)
 
 ```bash
-git clone https://github.com/<owner>/continuum-walkthrough
+git clone https://github.com/whoisjaso/continuum-walkthrough
 ln -s "$PWD/continuum-walkthrough" ~/.claude/skills/continuum-walkthrough   # Claude Code
 ln -s "$PWD/continuum-walkthrough" ~/.codex/skills/continuum-walkthrough    # Codex
 ```
